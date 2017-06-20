@@ -1,7 +1,7 @@
 # Homework #5 for Pivorak ruby course
 # Rails introduction
 
-Task
+Tasks:
 
 1. Write a simple web app which allows you to create an event(bbq, pizza-day, or etc.).
 2. Add credentials to it (place, date, etc…).
