@@ -1,5 +1,5 @@
 # Homework #5 for Pivorak ruby course
-# Testing with RSpec/Minitest
+# Rails introduction
 
 Task
 
