@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Homework5</title>
+    <title>Homework5_v.11</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,21 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div id="container">
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, id: "flash_#{name}" %>
+      <% end %>
+
+      <div id="user_header">
+        <% if logged_in? %>
+          <%= "Logged in as: #{user_login}" %>
+          <%= link_to 'Logout', logout_path %>
+        <% else %>
+          <%= render 'sessions/new' %>
+        <% end %>
+      </div>
+
+      <%= yield %>
+    </div>
   </body>
 </html>
