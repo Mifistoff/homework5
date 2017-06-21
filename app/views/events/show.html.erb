@@ -20,11 +20,19 @@
   <%= @event.description %>
 </p>
 
+<p>
+  <% if @current_user && @current_user.role == 'user' %>
+    <%= render 'subscriptions/form' %>
+  <% end %>
+</p>
+
 <h2>Comments</h2>
 <%= render @event.comments %>
 
+<% if @current_user %>
 <h2>Add a comment:</h2>
 <%= render 'comments/new' %>
+<% end %>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Edit', edit_event_path(@event) if is_admin? %>
 <%= link_to 'Back', events_path %>

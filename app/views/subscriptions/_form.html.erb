@@ -1,0 +1,10 @@
+<% if @event.subscriptions.find{|s| s.user_id == user_info[:id]} %>
+  <p> you are subscribed </p>
+  <%= link_to 'Unsubscribe', [@event, @event.subscriptions.find{|s| s.user_id == user_info[:id]}],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+<% else %>
+  <%= form_for([@event, @event.subscriptions.build]) do |f| %>
+    <p><%= f.submit %></p>
+  <% end %>
+<% end %>

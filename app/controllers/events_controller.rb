@@ -14,11 +14,13 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
+    redirect_to events_path if !is_admin?
     @event = Event.new
   end
 
   # GET /events/1/edit
   def edit
+    redirect_to events_path if !is_admin?
   end
 
   # POST /events
@@ -37,6 +39,10 @@ class EventsController < ApplicationController
     end
   end
 
+  def subscribe
+    raise params.inspect
+    redirect_to events_path
+  end
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
@@ -54,9 +60,13 @@ class EventsController < ApplicationController
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
-    @event.destroy
+    notice = 'You have no permission.'
+    if is_admin?
+      @event.destroy
+      notice = 'Event was successfully destroyed.'
+    end
     respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
+      format.html { redirect_to events_url, notice: notice }
       format.json { head :no_content }
     end
   end

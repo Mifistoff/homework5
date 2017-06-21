@@ -10,11 +10,15 @@ class ApplicationController < ActionController::Base
     { id: @current_user.id, login: @current_user.login, role: @current_user.role }
   end
 
+  def is_admin?
+    @current_user && @current_user.role == 'admin'
+  end
+
   private
 
   def logged_in?
     session[:user_id].present?
   end
 
-  helper_method :logged_in?, :user_info
+  helper_method :logged_in?, :user_info, :is_admin?
 end
