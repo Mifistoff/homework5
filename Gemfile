@@ -41,6 +41,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'simplecov', :require => false, :group => :test
+  gem 'rails-controller-testing'
 end
 
 group :development do
