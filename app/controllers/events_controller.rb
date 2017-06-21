@@ -39,10 +39,6 @@ class EventsController < ApplicationController
     end
   end
 
-  def subscribe
-    raise params.inspect
-    redirect_to events_path
-  end
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
