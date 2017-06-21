@@ -16,7 +16,7 @@
 
       <div id="user_header">
         <% if logged_in? %>
-          <%= "Logged in as: #{user_login}" %>
+          <%= "Logged in as: #{user_info[:login]}" %>
           <%= link_to 'Logout', logout_path %>
         <% else %>
           <%= render 'sessions/new' %>
